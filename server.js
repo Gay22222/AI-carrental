@@ -3,10 +3,8 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 
-// Middleware để phân tích JSON body
 app.use(express.json());
 
-// OpenRouter API configuration
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
@@ -15,7 +13,6 @@ if (!OPENROUTER_API_KEY) {
     process.exit(1);
 }
 
-// Route để xử lý chat requests
 app.post('/api/chat', async (req, res) => {
     try {
         const { model, messages } = req.body;
@@ -47,4 +44,4 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
-module.exports = app; // Export cho Vercel
+module.exports = app;
